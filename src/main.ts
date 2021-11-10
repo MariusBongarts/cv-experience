@@ -1,6 +1,8 @@
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { doAnimation } from "./animation";
 import { env } from "./env";
+import "./components/experience-content";
 
 export interface CvEntry {
   from: string;
@@ -36,57 +38,7 @@ const globalStyles = `
 	 position: relative;
 	 width: 100%;
 }
-/*##### HERO SECTION #####*/
- .hero {
-	 height: 100%;
-	 background: url('https://source.unsplash.com/a2NRu2Wxa2o/');
-	 background-size: cover;
-	 background-position: center;
-}
- .hero .content {
-	 background: rgba(0, 0, 0, 0.5);
-	 width: 100%;
-	 height: 100%;
-}
- .hero .content .header {
-	 position: absolute;
-	 top: 55%;
-	 width: 100%;
-	 -webkit-transform: translate(0%, -50%);
-	 transform: translate(0%, -50%);
-	 text-align: center;
-	 opacity: 0;
-}
- .hero .content .header h1 {
-	 color: #fff;
-	 font-size: 2.5em;
-	 text-shadow: 0px 2px 3px #2d2d2d;
-}
-/*##### ABOUT MYSELF SECTION #####*/
- .about-myself {
-	 padding: 50px 20px;
-}
- .about-myself .content {
-	 text-align: center;
-}
- .about-myself .content h2 {
-	 color: #3d3d3d;
-	 font-size: 3em;
-	 margin-bottom: 20px;
-	 -webkit-transform: translateY(-50px) scale(0);
-	 transform: translateY(-50px) scale(0);
-	 -webkit-transition: transform 0.7s;
-	 -moz-transition: transform 0.7s;
-	 transition: transform 0.7s;
-}
- .about-myself .content .aboutTitleVisible {
-	 -webkit-transform: translateY(0px) scale(1);
-	 transform: translateX(0px) scale(1);
-}
- .about-myself .content p span {
-	 color: #c0392b;
-	 font-weight: bold;
-}
+
 /*##### EXPERIENCE SECTION #####*/
  .experience {
 	 background: #002440;
@@ -165,248 +117,9 @@ const globalStyles = `
 	 width: 35px;
 	 height: 5px;
 }
-/*##### SKILLS SECTION #####*/
- .skills {
-	 padding: 70px 20px;
-}
- .skills .content .development-wrapper .development-title {
-	 color: #3c3c3c;
-	 font-size: 2em;
-	 text-align: center;
-	 margin-bottom: 20px;
-}
- .skills .content .development-wrapper .skills-bar-container {
-	 position: relative;
-	 width: 100%;
-	 list-style-type: none;
-}
- .skills .content .development-wrapper .skills-bar-container li {
-	 width: 100%;
-	 margin-bottom: 20px;
-}
- .skills .content .development-wrapper .skills-bar-container li .progressbar-title {
-	 color: #3c3c3c;
-	 margin-bottom: 5px;
-}
- .skills .content .development-wrapper .skills-bar-container li .progressbar-title h3 {
-	 display: inline-block;
-}
- .skills .content .development-wrapper .skills-bar-container li .progressbar-title .percent {
-	 position: absolute;
-	 right: 20px;
-	 font-size: 1.1em;
-}
- .skills .content .development-wrapper .skills-bar-container li .bar-container {
-	 background: #ececec;
-	 position: relative;
-	 width: 100%;
-	 height: 10px;
-}
- .skills .content .development-wrapper .skills-bar-container li .bar-container .progressbar {
-	 background: #34495e;
-	 position: absolute;
-	 width: 0%;
-	 height: 100%;
-}
- .skills .content .tools-knowledge-wrapper {
-	 width: 100%;
-}
- .skills .content .tools-knowledge-wrapper .tools-wrapper, .skills .content .tools-knowledge-wrapper .knowledge-wrapper {
-	 position: relative;
-	 padding: 20px 0;
-	 widht: 100%;
-	 text-align: center;
-}
- .skills .content .tools-knowledge-wrapper .tools-wrapper .title, .skills .content .tools-knowledge-wrapper .knowledge-wrapper .title {
-	 color: #3c3c3c;
-	 font-size: 2em;
-	 margin-bottom: 10px;
-}
- .skills .content .tools-knowledge-wrapper .tools-wrapper ul, .skills .content .tools-knowledge-wrapper .knowledge-wrapper ul {
-	 list-style-type: none;
-	 margin-left: 40px;
-}
- .skills .content .tools-knowledge-wrapper .tools-wrapper ul li, .skills .content .tools-knowledge-wrapper .knowledge-wrapper ul li {
-	 color: #444;
-	 font-weight: bold;
-	 font-size: 1.1em;
-	 text-align: left;
-}
- .skills .content .tools-knowledge-wrapper .tools-wrapper ul li i, .skills .content .tools-knowledge-wrapper .knowledge-wrapper ul li i {
-	 color: #27ae60;
-}
-/*##### RESUME SECTION #####*/
- .resume {
-	 background: url('https://source.unsplash.com/L8126OwlroY/');
-	 background-size: cover;
-	 background-position: center;
-	 background-repeat: no-repeat;
-}
- .resume .content {
-	 background: rgba(0, 0, 0, 0.3);
-	 padding: 50px 0;
-	 text-align: center;
-}
- .resume .content a {
-	 color: #fff;
-	 text-transform: uppercase;
-}
- .resume .content a .btn-resume {
-	 display: inline-block;
-	 font-size: 1.1em;
-	 padding: 20px;
-	 margin: 0 15px;
-	 background: rgba(255, 255, 255, 0.2);
-	 position: relative;
-	 border: 2px solid #fff;
-	 border-radius: 5px;
-	 overflow: hidden;
-}
- .resume .content a .btn-resume span {
-	 -webkit-transition: opacity 1.2s;
-	 -moz-transition: opacity 1.2s;
-	 transition: opacity 1.2s;
-}
- .resume .content a .btn-resume i {
-	 color: #fff;
-	 position: absolute;
-	 padding: 20px 0;
-	 top: -80px;
-	 width: 100%;
-	 left: 0;
-	 -webkit-transition: top 0.5s;
-	 -moz-transition: top 0.5s;
-	 transition: top 0.5s;
-}
- .resume .content a .btn-resume:hover span {
-	 opacity: 0;
-	 -webkit-transition: opacity 0.4s;
-	 -moz-transition: opacity 0.4s;
-	 transition: opacity 0.4s;
-}
- .resume .content a .btn-resume:hover i {
-	 top: 0;
-}
-/*##### PORTFOLIO SECTION #####*/
- .portfolio {
-	 background: #f9f9f9;
-	 padding: 80px 0;
-}
- .portfolio .content {
-	 text-align: center;
-}
- .portfolio .content h1 {
-	 color: #3c3c3c;
-	 font-size: 2em;
-	 margin-bottom: 50px;
-}
- .portfolio .content .projects {
-	 width: 100%;
-}
- .portfolio .content .projects .project {
-	 color: #fff;
-	 position: relative;
-	 width: 80%;
-	 margin-left: 10%;
-	 margin-right: 10%;
-	 margin-bottom: 10%;
-	 overflow: hidden;
-}
- .portfolio .content .projects .project:last-child {
-	 margin-bottom: 0;
-}
- .portfolio .content .projects .project .project-image img {
-	 width: 100%;
-}
- .portfolio .content .projects .project .project-title {
-	 color: #3c3c3c;
-	 padding: 10px 0;
-}
- .portfolio .content .projects .project .project-description {
-	 color: #444;
-}
-/*##### CONTACT SECTION #####*/
- .contact {
-	 padding: 30px 0;
-}
- .contact .socials {
-	 list-style-type: none;
-	 width: 100%;
-}
- .contact .socials .social {
-	 width: 25%;
-	 float: left;
-	 text-align: center;
-}
- .contact .socials .social a {
-	 color: #3d3d3d;
-	 font-size: 1.5em;
-	 -webkit-transition: color 0.3s;
-	 -moz-transition: color 0.3s;
-	 transition: color 0.3s;
-}
- .contact .socials .social .email:hover {
-	 color: #c8a028;
-}
- .contact .socials .social .twitter:hover {
-	 color: #57aee7;
-}
- .contact .socials .social .linkedin:hover {
-	 color: #0177b5;
-}
- .contact .socials .social .codepen:hover {
-	 color: #707070;
-}
- .contact .clear {
-	 clear: both;
-}
- .footer {
-	 padding: 25px 0;
-	 text-align: center;
-}
- .footer p {
-	 color: #777;
-	 font-size: 1.1em;
-}
- .footer i {
-	 color: #e74c3c;
-}
+
 /* ############################ RESPONSIVE ############################### */
- @media screen and (min-width: 480px) {
-	 .skills .content .tools-knowledge-wrapper .tools-wrapper, .skills .content .tools-knowledge-wrapper .knowledge-wrapper {
-		 width: 50%;
-		 float: left;
-		 padding: 0;
-	}
-	 .skills .content .tools-knowledge-wrapper .tools-wrapper ul, .skills .content .tools-knowledge-wrapper .knowledge-wrapper ul {
-		 margin-left: 0;
-	}
-	 .skills .content .clear {
-		 clear: both;
-	}
-}
- @media screen and (min-width: 640px) {
-	 .about-myself {
-		 padding: 100px 40px;
-	}
-	 .skills {
-		 padding-left: 0;
-		 padding-right: 0;
-	}
-	 .skills .content .development-wrapper {
-		 width: 600px;
-		 margin: auto;
-		 margin-bottom: 50px;
-	}
-	 .skills .content .tools-knowledge-wrapper {
-		 width: 600px;
-		 margin: auto;
-	}
-	 .contact .content .socials {
-		 width: 600px;
-		 margin: auto;
-	}
-}
+
  @media screen and (min-width: 960px) {
 	 .experience .content ul li {
 		 margin: 0 auto;
@@ -438,95 +151,6 @@ const globalStyles = `
 	 .experience .content ul li:nth-child(even) .hidden {
 		 margin-left: -10vw;
 	}
-	 .skills {
-		 padding-left: 50px;
-		 padding-right: 50px;
-	}
-	 .skills .content {
-		 max-width: 1100px;
-		 margin: auto;
-	}
-	 .skills .content .development-wrapper, .skills .content .tools-knowledge-wrapper {
-		 float: left;
-	}
-	 .skills .content .development-wrapper {
-		 margin-bottom: 0;
-		 width: 60%;
-	}
-	 .skills .content .tools-knowledge-wrapper {
-		 width: 40%;
-		 margin-top: 60px;
-	}
-	 .skills .content .tools-knowledge-wrapper .tools-wrapper, .skills .content .tools-knowledge-wrapper .knowledge-wrapper {
-		 float: none;
-		 margin: auto;
-	}
-	 .skills .content .tools-knowledge-wrapper .tools-wrapper {
-		 margin-bottom: 30px;
-	}
-	 .portfolio .content .projects .project {
-		 position: relative;
-		 margin: auto;
-		 margin-bottom: 3%;
-		 width: 680px;
-		 height: 450px;
-		 overflow: hidden;
-	}
-	 .portfolio .content .projects .project:hover .project-image {
-		 -webkit-transform: scale(0.5);
-		 transform: scale(0.5);
-	}
-	 .portfolio .content .projects .project:hover .project-title, .portfolio .content .projects .project:hover .project-description {
-		 opacity: 1;
-	}
-	 .portfolio .content .projects .project .project-image {
-		 position: absolute;
-		 left: 0;
-		 top: 0;
-		 right: 0;
-		 bottom: 0;
-		 -webkit-transition: transform 0.5s ease;
-		 transition: transform 0.5s ease;
-		 -webkit-transform-origin: left top;
-		 transform-origin: left top;
-		 z-index: 3;
-		 overflow: hidden;
-	}
-	 .portfolio .content .projects .project .project-image img {
-		 width: 100%;
-		 height: auto;
-		 min-height: 100%;
-		 min-width: 100%;
-	}
-	 .portfolio .content .projects .project .project-title, .portfolio .content .projects .project .project-description {
-		 position: absolute;
-		 height: 50%;
-		 opacity: 0;
-		 -webkit-transition: opacity 0.3s linear;
-		 transition: opacity 0.3s linear;
-		 overflow: hidden;
-	}
-	 .portfolio .content .projects .project .project-title {
-		 width: 50%;
-		 top: 0;
-		 right: 0;
-		 padding: 10px;
-		 text-align: center;
-		 display: table;
-	}
-	 .portfolio .content .projects .project .project-title h2 {
-		 font-size: 2em;
-		 text-decoration: underline;
-		 display: table-cell;
-		 vertical-align: middle;
-	}
-	 .portfolio .content .projects .project .project-description {
-		 width: 100%;
-		 top: 50%;
-		 left: 0;
-		 padding: 25px 10px;
-		 text-align: left;
-	}
 }
  
   </style>
@@ -549,6 +173,7 @@ class MyCv extends LitElement {
         `${env.api}&spreadsheetId=1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s`
       )
     ).json();
+    doAnimation();
   }
 
   createRenderRoot() {
@@ -564,17 +189,16 @@ class MyCv extends LitElement {
       <section class="experience">
         <div class="content">
           <ul>
-            ${this.cvEntries.map(
-              ({ company, from, to, description, job_title }) => html`
-                <li>
-                  <div class="experience-content hidden">
-                    <h2>${company}</h2>
-                    <div class="experience-time">${from} - ${to}</div>
-                    <p>${description}</p>
-                  </div>
-                </li>
-              `
-            )}
+            ${this.cvEntries.length
+              ? this.cvEntries.map(
+                  (cvEntry, index) => html`
+                    <experience-content
+                      .cvEntry=${cvEntry}
+                      .index=${index}
+                    ></experience-content>
+                  `
+                )
+              : html`<span>Loading...</span>`}
           </ul>
         </div>
       </section>

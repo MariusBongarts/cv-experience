@@ -4,7 +4,13 @@ import { customElement, property } from "lit/decorators.js";
 import { CvEntry } from "../main";
 
 const componentStyle = css`
-  /*##### EXPERIENCE SECTION #####*/
+  *,
+  *:before,
+  *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   .experience {
     background: #002440;
     padding: 50px 0;
@@ -17,21 +23,21 @@ const componentStyle = css`
     font-size: 2em;
     color: #fff;
   }
-  .experience .content ul {
+   {
     padding: 50px 0;
     list-style-type: none;
   }
-  .experience .content ul li {
+  li {
     background: #f5f5f5;
     position: relative;
     margin-left: 20px;
     width: 5px;
     padding-bottom: 40px;
   }
-  .experience .content ul li:last-child {
+  li:last-child {
     padding-bottom: 7px;
   }
-  .experience .content ul li:before {
+  li:before {
     content: "";
     background: #002440;
     position: absolute;
@@ -43,11 +49,11 @@ const componentStyle = css`
     height: 20px;
     border: 4px solid #f5f5f5;
   }
-  .experience .content ul li .hidden {
+  li .hidden {
     opacity: 0;
     margin-left: 10vw;
   }
-  .experience .content ul li .experience-content {
+  .experience-content {
     background: #f5f5f5;
     position: relative;
     top: 7px;
@@ -59,21 +65,21 @@ const componentStyle = css`
     -moz-border-radius: 0 5px 5px;
     border-radius: 0 5px 5px;
   }
-  .experience .content ul li .experience-content h2 {
+  .experience-content h2 {
     font-size: 1.5em;
     color: #3c3c3c;
     padding-bottom: 10px;
   }
-  .experience .content ul li .experience-content .experience-time {
+  .experience-content .experience-time {
     color: #777;
     font-size: 1.1em;
     padding-bottom: 10px;
   }
-  .experience .content ul li .experience-content p {
+  .experience-content p {
     color: #1a1a1a;
     font-size: 0.95em;
   }
-  .experience .content ul li .experience-content:before {
+  .experience-content:before {
     content: "";
     background: #f5f5f5;
     position: absolute;
@@ -81,6 +87,39 @@ const componentStyle = css`
     left: -35px;
     width: 35px;
     height: 5px;
+  }
+
+  @media screen and (min-width: 960px) {
+    li {
+      margin: 0 auto;
+    }
+    .experience-content {
+      width: 40vw;
+    }
+    li.odd .experience-content {
+      left: 63px;
+    }
+    li.odd .experience-content:before {
+      left: -50px;
+      width: 50px;
+    }
+    li.even .experience-content {
+      left: calc(-40vw - 57px);
+      -webkit-border-radius: 5px 0px 5px 5px;
+      -moz-border-radius: 5px 0px 5px 5px;
+      border-radius: 5px 0px 5px 5px;
+    }
+    li.even .experience-content:before {
+      left: auto;
+      right: -50px;
+      width: 50px;
+    }
+    li.odd .hidden {
+      margin-left: 10vw;
+    }
+    li.even .hidden {
+      margin-left: -10vw;
+    }
   }
 `;
 
@@ -91,9 +130,12 @@ class ExperienceContent extends LitElement {
   @property()
   cvEntry!: CvEntry;
 
+  @property()
+  index!: number;
+
   render() {
     return html`
-      <li>
+      <li class=${this.index % 2 === 0 ? "even" : "odd"}>
         <div class="experience-content hidden">
           <h2>${this.cvEntry.company}</h2>
           <div class="experience-time">
