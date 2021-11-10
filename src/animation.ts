@@ -5,7 +5,6 @@ export function doAnimation() {
     const experiences = [
       ...document.querySelectorAll(".experience .content experience-content"),
     ].map((experience) => experience.shadowRoot?.querySelector(".hidden"));
-    console.log(experiences);
     for (let experience of experiences) {
       experience && animateElement(experience);
     }
@@ -35,5 +34,5 @@ export function doAnimation() {
 
   setTimeout(() => {
     showExperiences();
-  }, 1000);
+  }, 0);
 }

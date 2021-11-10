@@ -20,11 +20,17 @@ const globalStyles = `
 	 padding: 0;
 	 box-sizing: border-box;
 }
- html, body {
+:root {
+	--color-primary: #04c2c9;
+    --color-action: #e31b6d;
+    --color-bg: #d2dbdd;
+    --color-chip-bg: #f2f2f2;
+    --color-chip-bg-hover: #e6e6e6;
+  }
+
+.experience {
 	 width: 100%;
 	 height: 100%;
-}
- body {
 	 color: #444;
 	 background: #f9f9f9;
 	 font-size: 16px;

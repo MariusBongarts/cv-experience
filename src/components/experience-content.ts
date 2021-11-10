@@ -100,8 +100,8 @@ const componentStyle = css`
       left: 63px;
     }
     li.odd .experience-content:before {
-      left: -50px;
-      width: 50px;
+      left: -52px;
+      width: 52px;
     }
     li.even .experience-content {
       left: calc(-40vw - 57px);
@@ -111,14 +111,26 @@ const componentStyle = css`
     }
     li.even .experience-content:before {
       left: auto;
-      right: -50px;
-      width: 50px;
+      right: -52px;
+      width: 52px;
     }
     li.odd .hidden {
       margin-left: 10vw;
     }
     li.even .hidden {
       margin-left: -10vw;
+    }
+
+    @keyframes circle {
+      from {
+        box-shadow: 0 0 0 0px var(--color-primary);
+      }
+      to {
+        box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+      }
+    }
+    li:hover::before {
+      animation: circle 1.2s infinite;
     }
   }
 `;
