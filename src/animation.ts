@@ -18,7 +18,6 @@ export function doAnimation(rootElement: ShadowRoot) {
         element.getBoundingClientRect().bottom - window.innerHeight <
         element.clientHeight;
       if (elementIsAtBottomOfScreen) {
-        console.log(index);
         const ANIMATION_DURATION = 600;
         element.animate(
           {

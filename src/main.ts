@@ -4,9 +4,12 @@ import { doAnimation } from "./animation";
 import "./components/experience-content";
 import {
   Config,
-  cvExperienceConfigService,
   Design,
-} from "./services/ConfigurationService";
+  GoogleSheetService,
+} from "./services/GoogleSheetService";
+
+const SPREADSHEET_CV_EXPERIENCE =
+  "1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s";
 
 export interface CvEntry {
   from: string;
@@ -86,9 +89,13 @@ const DEFAULT_MAX_ARTICLES = 10;
 @customElement("cv-experience")
 class CvExperience extends LitElement {
   static styles = [componentStyle];
+  configService!: GoogleSheetService;
 
   @property()
   config: Config | null = null;
+
+  @property()
+  spreadsheetId: string = "";
 
   constructor() {
     super();
@@ -96,7 +103,10 @@ class CvExperience extends LitElement {
   }
 
   async firstUpdated() {
-    this.config = await cvExperienceConfigService.getConfig();
+    this.configService = new GoogleSheetService(
+      this.spreadsheetId || SPREADSHEET_CV_EXPERIENCE
+    );
+    this.config = await this.configService.getConfig();
     this.innerHTML += colors(this.config.design[0]);
     doAnimation(this.shadowRoot!);
   }

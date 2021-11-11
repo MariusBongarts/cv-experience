@@ -1,9 +1,6 @@
 import { env } from "../env";
 import { HttpService } from "./HttpService";
 
-const SPREADSHEET_CV_EXPERIENCE =
-  "1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s";
-
 export interface Config {
   experiences: Experience[];
   design: Design[];
@@ -25,7 +22,7 @@ export interface Design {
   experience_background: string;
 }
 
-class GoogleSheetService extends HttpService<Config> {
+export class GoogleSheetService extends HttpService<Config> {
   constructor(private spreadsheetId: string) {
     super(env.api);
   }
@@ -36,7 +33,3 @@ class GoogleSheetService extends HttpService<Config> {
     );
   }
 }
-
-export const cvExperienceConfigService = new GoogleSheetService(
-  SPREADSHEET_CV_EXPERIENCE
-);

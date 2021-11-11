@@ -1,7 +1,7 @@
 import { html, css, LitElement } from "lit";
 import { sharedStyles } from "../shared/style";
 import { customElement, property } from "lit/decorators.js";
-import { Experience } from "../services/ConfigurationService";
+import { Experience } from "../services/GoogleSheetService";
 
 const componentStyle = css`
   *,
@@ -140,13 +140,17 @@ const componentStyle = css`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
   }
 
   .logo {
     height: 35px;
     width: 35px;
     margin-right: 8px;
-    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .logo img {
     width: 100%;
@@ -175,10 +179,10 @@ class ExperienceContent extends LitElement {
                   <img src="${this.experience.logo}" alt="company-logo" />
                 </div>`
               : html``}
-            <h2>${this.experience.job_title}</h2>
+            <h3>${this.experience.job_title}</h3>
           </div>
           <div class="experience-time">
-            <h3>${this.experience.company}</h3>
+            <h4>${this.experience.company}</h4>
           </div>
           <div class="experience-time">
             ${this.experience.from} - ${this.experience.to}
