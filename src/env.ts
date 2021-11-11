@@ -1,3 +1,3 @@
 export const env = {
-  api: "https://unruffled-varahamihira-0fe598.netlify.app/.netlify/functions/sheets?sheet=my-cv",
+  api: "https://unruffled-varahamihira-0fe598.netlify.app/.netlify/functions/sheets",
 };

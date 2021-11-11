@@ -1,7 +1,7 @@
 import { html, css, LitElement } from "lit";
 import { sharedStyles } from "../shared/style";
 import { customElement, property } from "lit/decorators.js";
-import { CvEntry } from "../main";
+import { Experience } from "../services/ConfigurationService";
 
 const componentStyle = css`
   *,
@@ -12,7 +12,7 @@ const componentStyle = css`
     box-sizing: border-box;
   }
   .experience {
-    background: #002440;
+    background: var(--experience_background);
     padding: 50px 0;
     overflow-x: hidden;
   }
@@ -28,7 +28,7 @@ const componentStyle = css`
     list-style-type: none;
   }
   li {
-    background: #f5f5f5;
+    background: var(--experience_background);
     position: relative;
     margin-left: 20px;
     width: 5px;
@@ -47,14 +47,16 @@ const componentStyle = css`
     transform: translateX(-50%);
     width: 20px;
     height: 20px;
-    border: 4px solid #f5f5f5;
+    border: 4px solid var(--experience_background);
+    border-radius: 50%;
+
   }
   li .hidden {
     opacity: 0;
     margin-left: 10vw;
   }
   .experience-content {
-    background: #f5f5f5;
+    background: var(--experience_background);
     position: relative;
     top: 7px;
     left: 48px;
@@ -81,7 +83,7 @@ const componentStyle = css`
   }
   .experience-content:before {
     content: "";
-    background: #f5f5f5;
+    background: var(--experience_background);
     position: absolute;
     top: 0;
     left: -35px;
@@ -123,7 +125,7 @@ const componentStyle = css`
 
     @keyframes circle {
       from {
-        box-shadow: 0 0 0 0px var(--color-primary);
+        box-shadow: 0 0 0 0px var(--primary_color);
       }
       to {
         box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
@@ -133,6 +135,24 @@ const componentStyle = css`
       animation: circle 1.2s infinite;
     }
   }
+
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo {
+    height: 35px;
+    width: 35px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+  .logo img {
+    width: 100%;
+    height: 100%;
+  }
+  }
 `;
 
 @customElement("experience-content")
@@ -140,7 +160,7 @@ class ExperienceContent extends LitElement {
   static styles = [sharedStyles, componentStyle];
 
   @property()
-  cvEntry!: CvEntry;
+  experience!: Experience;
 
   @property()
   index!: number;
@@ -149,11 +169,21 @@ class ExperienceContent extends LitElement {
     return html`
       <li class=${this.index % 2 === 0 ? "even" : "odd"}>
         <div class="experience-content hidden">
-          <h2>${this.cvEntry.company}</h2>
-          <div class="experience-time">
-            ${this.cvEntry.from} - ${this.cvEntry.to}
+          <div class="header">
+            ${this.experience.logo
+              ? html`<div class="logo">
+                  <img src="${this.experience.logo}" alt="company-logo" />
+                </div>`
+              : html``}
+            <h2>${this.experience.job_title}</h2>
           </div>
-          <p>${this.cvEntry.description}</p>
+          <div class="experience-time">
+            <h3>${this.experience.company}</h3>
+          </div>
+          <div class="experience-time">
+            ${this.experience.from} - ${this.experience.to}
+          </div>
+          <p>${this.experience.description}</p>
         </div>
       </li>
     `;
