@@ -11,14 +11,6 @@ import {
 const SPREADSHEET_CV_EXPERIENCE =
   "1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s";
 
-export interface CvEntry {
-  from: string;
-  to: string;
-  company: string;
-  job_title: string;
-  description: string;
-}
-
 const globalStyles = `
 <style>
 @import url(https://fonts.googleapis.com/css?family=PT+Sans);
@@ -85,7 +77,6 @@ const componentStyle = css`
   }
 `;
 
-const DEFAULT_MAX_ARTICLES = 10;
 @customElement("cv-experience")
 class CvExperience extends LitElement {
   static styles = [componentStyle];
