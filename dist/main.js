@@ -64,26 +64,25 @@
     position: relative;
     top: 7px;
     left: 48px;
-    width: calc(100vw - 100px);
+    width: calc(100vw - 80px);
     padding: 20px;
     text-align: center;
     -webkit-border-radius: 0 5px 5px;
     -moz-border-radius: 0 5px 5px;
     border-radius: 0 5px 5px;
   }
-  .experience-content h2 {
+  .experience-content h3 {
     font-size: 1.5em;
-    color: #3c3c3c;
-    padding-bottom: 10px;
+    color: var(--header_font_color);
   }
   .experience-content .experience-time {
-    color: #777;
+    color: var(--font_color);
     font-size: 1.1em;
     padding-bottom: 10px;
   }
   .experience-content p {
-    color: #1a1a1a;
-    font-size: 0.95em;
+    color: var(--font_color);
+    font-size: 1em;
   }
   .experience-content:before {
     content: "";
@@ -137,6 +136,7 @@
     }
     li:hover::before {
       animation: circle 1.2s infinite;
+      background: var(--primary_color);
     }
   }
 
@@ -221,7 +221,7 @@
     padding: 50px 0;
     list-style-type: none;
   }
-`;let le=class extends Z{constructor(){super(),this.config=null,this.spreadsheetId="",this.innerHTML+="\n<style>\n@import url(https://fonts.googleapis.com/css?family=PT+Sans);\n</style>\n"}firstUpdated(){return function(e,t,i,n){return new(i||(i=Promise))((function(s,o){function r(e){try{c(n.next(e))}catch(e){o(e)}}function l(e){try{c(n.throw(e))}catch(e){o(e)}}function c(e){var t;e.done?s(e.value):(t=e.value,t instanceof i?t:new i((function(e){e(t)}))).then(r,l)}c((n=n.apply(e,t||[])).next())}))}(this,void 0,void 0,(function*(){this.configService=new se(this.spreadsheetId||"1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s"),this.config=yield this.configService.getConfig(),this.innerHTML+=(({accent_color:e,primary_color:t,background_color:i,experience_background:n})=>`\n<style>\n:root {\n  --primary_color: ${t};\n  --accent_color: ${e};\n  --background_color: ${i};\n  --experience_background: ${n};\n}\n</style>\n`)(this.config.design[0]),function(e){function t(){[...e.querySelectorAll(".experience .content experience-content")].map((e=>{var t;return null===(t=e.shadowRoot)||void 0===t?void 0:t.querySelector(".hidden")})).filter((e=>!!e)).forEach(((e,t)=>function(e,t){setTimeout((()=>{if(e.getBoundingClientRect().bottom-window.innerHeight<e.clientHeight){const t=600;e.animate({opacity:"1",marginLeft:"0"},{duration:t}),setTimeout((()=>{e.classList.remove("hidden")}),t)}}),100*t)}(e,t)))}window.onscroll=()=>t(),setTimeout((()=>{t()}),0)}(this.shadowRoot)}))}render(){return H`
+`;let le=class extends Z{constructor(){super(),this.config=null,this.spreadsheetId="",this.innerHTML+="\n<style>\n@import url(https://fonts.googleapis.com/css?family=PT+Sans);\n</style>\n"}firstUpdated(){return function(e,t,i,n){return new(i||(i=Promise))((function(s,o){function r(e){try{c(n.next(e))}catch(e){o(e)}}function l(e){try{c(n.throw(e))}catch(e){o(e)}}function c(e){var t;e.done?s(e.value):(t=e.value,t instanceof i?t:new i((function(e){e(t)}))).then(r,l)}c((n=n.apply(e,t||[])).next())}))}(this,void 0,void 0,(function*(){this.configService=new se(this.spreadsheetId||"1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s"),this.config=yield this.configService.getConfig(),this.innerHTML+=(({accent_color:e,primary_color:t,background_color:i,experience_background:n,font_color:s,header_font_color:o})=>`\n<style>\n:root {\n  --primary_color: ${t};\n  --accent_color: ${e};\n  --background_color: ${i};\n  --experience_background: ${n};\n  --font_color: ${s};\n  --header_font_color: ${o};\n}\n</style>\n`)(this.config.design[0]),function(e){function t(){[...e.querySelectorAll(".experience .content experience-content")].map((e=>{var t;return null===(t=e.shadowRoot)||void 0===t?void 0:t.querySelector(".hidden")})).filter((e=>!!e)).forEach(((e,t)=>function(e,t){setTimeout((()=>{if(e.getBoundingClientRect().bottom-window.innerHeight<e.clientHeight){const t=600;e.animate({opacity:"1",marginLeft:"0"},{duration:t}),setTimeout((()=>{e.classList.remove("hidden")}),t)}}),100*t)}(e,t)))}window.onscroll=()=>t(),setTimeout((()=>{t()}),0)}(this.shadowRoot)}))}render(){return H`
       <section class="experience">
         <div class="content">
           <ul>

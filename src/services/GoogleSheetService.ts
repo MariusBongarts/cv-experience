@@ -20,6 +20,8 @@ export interface Design {
   accent_color: string;
   background_color: string;
   experience_background: string;
+  font_color: string;
+  header_font_color: string;
 }
 
 export class GoogleSheetService extends HttpService<Config> {

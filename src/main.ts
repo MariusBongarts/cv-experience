@@ -22,6 +22,8 @@ const colors = ({
   primary_color,
   background_color,
   experience_background,
+  font_color,
+  header_font_color,
 }: Design) => `
 <style>
 :root {
@@ -29,6 +31,8 @@ const colors = ({
   --accent_color: ${accent_color};
   --background_color: ${background_color};
   --experience_background: ${experience_background};
+  --font_color: ${font_color};
+  --header_font_color: ${header_font_color};
 }
 </style>
 `;

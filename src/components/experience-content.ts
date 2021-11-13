@@ -60,26 +60,25 @@ const componentStyle = css`
     position: relative;
     top: 7px;
     left: 48px;
-    width: calc(100vw - 100px);
+    width: calc(100vw - 80px);
     padding: 20px;
     text-align: center;
     -webkit-border-radius: 0 5px 5px;
     -moz-border-radius: 0 5px 5px;
     border-radius: 0 5px 5px;
   }
-  .experience-content h2 {
+  .experience-content h3 {
     font-size: 1.5em;
-    color: #3c3c3c;
-    padding-bottom: 10px;
+    color: var(--header_font_color);
   }
   .experience-content .experience-time {
-    color: #777;
+    color: var(--font_color);
     font-size: 1.1em;
     padding-bottom: 10px;
   }
   .experience-content p {
-    color: #1a1a1a;
-    font-size: 0.95em;
+    color: var(--font_color);
+    font-size: 1em;
   }
   .experience-content:before {
     content: "";
@@ -133,6 +132,7 @@ const componentStyle = css`
     }
     li:hover::before {
       animation: circle 1.2s infinite;
+      background: var(--primary_color);
     }
   }
 
