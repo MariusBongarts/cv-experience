@@ -64,7 +64,7 @@
     position: relative;
     top: 7px;
     left: 48px;
-    width: calc(100vw - 80px);
+    width: calc(100vw - 100px);
     padding: 20px;
     text-align: center;
     -webkit-border-radius: 0 5px 5px;
