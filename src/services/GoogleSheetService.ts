@@ -13,6 +13,7 @@ export interface Experience {
   job_title: string;
   description: string;
   logo: string;
+  city: string;
 }
 
 export interface Design {
