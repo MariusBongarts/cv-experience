@@ -15,8 +15,10 @@
  1. Clone [this Google Sheets Spreadsheet](https://docs.google.com/spreadsheets/d/1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s/edit#gid=0) (**File** -> **Make a copy**)
  2. Adjust the data
  3. Share your Spreadsheet (**Share -> Change to anyone with the link**)
- 4. Connect your spreadsheet to the website. (Two options)
+ 4. Connect your spreadsheet to the website (Two options):
+ 	 <br>
 	 <br>
-	 Option 1: Add spreadsheet id to this link: [_https://mariusbongarts.github.io/cv-experience/?id=_**_1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s_**](https://mariusbongarts.github.io/cv-experience/?id=YOURSPREADSHEETID)
+	 Option 1: Add spreadsheet id to this link: https://mariusbongarts.github.io/cv-experience/?id=YOURSPREADSHEETID
+	 <br>
 	 <br>
 	 Option 2: Pass it to the web component. Here is an example codepen: https://codepen.io/marius2502/pen/KKvxvJe
