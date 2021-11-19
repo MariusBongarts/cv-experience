@@ -1,19 +1,20 @@
-## Series of Medium articles
 
-[Showcase Your Medium Articles with Web Components: Part 1 — Basics](https://medium.com/@mariusbongarts11/showcase-your-medium-articles-with-web-components-part-1-basics-d2c6618e9482?sk=cea5df95fbd3e204f486640d6eef50b2).
+## Medium article
 
-[Showcase Your Medium Articles with Web Components: Part 2 — Data Flow](https://javascript.plainenglish.io/build-your-own-blog-portfolio-with-web-components-data-flow-6c1a8f09c252).
+#### Build your personal CV experiences website using Web Components and Google Sheets as a CMS
 
-[Showcase Your Medium Articles with Web Components: Part 3 — Webpack](https://medium.com/@mariusbongarts11/build-your-own-blog-portfolio-with-web-components-webpack-4f35c8e5d2a9).
+[How To Use Google Sheets as a CMS or Database]().
 
-[Showcase Your Medium Articles with Web Components: Part 4 — Typescript]().
-
-[Showcase Your Medium Articles with Web Components: Part 5 — Lit Library]().
 
 # Demo
 
-[Live Demo](https://mariusbongarts.github.io/medium-portfolio-5/)
+[Live Demo](https://mariusbongarts.github.io/cv-experience/?id=1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s)
 
+# Get started
 
-
-
+ 1. Clone [this Google Sheets Spreadsheet](https://docs.google.com/spreadsheets/d/1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s/edit#gid=0) (**File** -> **Make a copy**)
+ 2. Adjust the data
+ 3. Share your Spreadsheet (**Share -> Change to anyone with the link**)
+ 4. Connect your spreadsheet to the website. (Two options)
+	 Option 1: Add spreadsheet id to this link: [_https://mariusbongarts.github.io/cv-experience/?id=_**_1SjV3Ho0_EV7oxyf9Mz_JjQJ77CiFRtFR8-YOqi7RJ5s_**](https://mariusbongarts.github.io/cv-experience/?id=YOURSPREADSHEETID)
+	 Option 2: Pass it to the web component. Here is an example codepen: https://codepen.io/marius2502/pen/KKvxvJe
