@@ -11,18 +11,6 @@ const componentStyle = css`
     padding: 0;
     box-sizing: border-box;
   }
-  .experience {
-    background: var(--experience_background);
-    padding: 50px 0;
-    overflow-x: hidden;
-  }
-  .experience .content {
-    text-align: center;
-  }
-  .experience .content h1 {
-    font-size: 2em;
-    color: #fff;
-  }
 
   li {
     background: var(--experience_background);
@@ -32,19 +20,19 @@ const componentStyle = css`
     padding-bottom: 40px;
   }
   @keyframes circle {
-      from {
-        box-shadow: 0 0 0 0px var(--primary_color);
-      }
-      to {
-        box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
-      }
+    from {
+      box-shadow: 0 0 0 0px var(--primary_color);
     }
-    li:hover::before {
-      animation: circle 1.2s infinite;
-      background: var(--primary_color);
+    to {
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
     }
+  }
+  li:hover::before {
+    animation: circle 1.2s infinite;
+    background: var(--primary_color);
+  }
   li:last-child {
-    padding-bottom: 7px;
+    padding-bottom: 30px;
   }
   li::before {
     content: "";
@@ -68,18 +56,36 @@ const componentStyle = css`
     position: relative;
     top: 7px;
     left: 48px;
-    width: calc(100vw - 100px);
-    padding: 20px;
+    width: calc(100vw - 90px);
+    padding: 20px 40px;
     text-align: center;
     -webkit-border-radius: 0 5px 5px;
     -moz-border-radius: 0 5px 5px;
     border-radius: 0 5px 5px;
   }
+
+  @media screen and (min-width: 1200px) {
+    .experience-content {
+      width: calc(100vw - 500px);
+    }
+  }
+  @media screen and (min-width: 900px) {
+    .experience-content {
+      width: calc(100vw - 300px);
+    }
+  }
+  @media screen and (min-width: 600px) {
+    .experience-content {
+      width: calc(100vw - 200px);
+    }
+  }
+
   .experience-content h3 {
     font-size: 1.5em;
     color: var(--header_font_color);
   }
-  .experience-content .experience-time, .company {
+  .experience-content .experience-time,
+  .company {
     color: var(--font_color);
     font-size: 1.1em;
     padding-bottom: 10px;
@@ -179,7 +185,7 @@ class ExperienceContent extends LitElement {
   dateTo!: Date;
 
   connectedCallback() {
-    super.connectedCallback()
+    super.connectedCallback();
     this.dateTo = this.getDateFromString(this.experience.to);
     this.dateFrom = this.getDateFromString(this.experience.from);
   }
@@ -189,28 +195,46 @@ class ExperienceContent extends LitElement {
   }
 
   getMonthFromDate(date: Date) {
-    return date.toLocaleString('default', { month: 'long' });
+    return date.toLocaleString("default", { month: "long" });
   }
 
   monthDiff() {
-    return this.dateTo.getMonth() - this.dateFrom.getMonth() +
-      (12 * (this.dateTo.getFullYear() - this.dateFrom.getFullYear())) + 1;
+    return (
+      this.dateTo.getMonth() -
+      this.dateFrom.getMonth() +
+      12 * (this.dateTo.getFullYear() - this.dateFrom.getFullYear()) +
+      1
+    );
   }
 
   get duration() {
     const months = this.monthDiff();
     const monthInYear = months % 12;
-    const years = months === 12 ? 1 : Math.round(months / 12) - 1;
-    return `${years > 0 ? `${years} ${years === 1 ? 'Year ' : 'Years '}` : ''}
-            ${monthInYear === 0 ? '' : `${monthInYear}${monthInYear === 1 ? ' Month' : ' Months'}`}`;
+    const years = months < 12 ? 0 : Math.round(months / 12);
+    return `${years > 0 ? `${years} ${years === 1 ? "Year " : "Years "}` : ""}
+            ${
+              monthInYear === 0
+                ? ""
+                : `${monthInYear}${monthInYear === 1 ? " Month" : " Months"}`
+            }`;
   }
 
   get experienceTime() {
     const today = new Date();
-    const isTodayDate = this.dateTo.getMonth() === today.getMonth() && this.dateTo.getFullYear() === today.getFullYear();
-    return `${this.getMonthFromDate(this.dateFrom)} ${this.dateFrom.getFullYear()}
+    const isTodayDate =
+      this.dateTo.getMonth() === today.getMonth() &&
+      this.dateTo.getFullYear() === today.getFullYear();
+    return `${this.getMonthFromDate(
+      this.dateFrom
+    )} ${this.dateFrom.getFullYear()}
             -
-            ${isTodayDate ? 'Today' : `${this.getMonthFromDate(this.dateTo)} ${this.dateTo.getFullYear()}`}`;
+            ${
+              isTodayDate
+                ? "Today"
+                : `${this.getMonthFromDate(
+                    this.dateTo
+                  )} ${this.dateTo.getFullYear()}`
+            }`;
   }
 
   render() {
@@ -218,11 +242,13 @@ class ExperienceContent extends LitElement {
       <li class=${this.index % 2 === 0 ? "even" : "odd"}>
         <div class="experience-content hidden">
           <div class="header">
-            ${this.experience.logo
-        ? html`<div class="logo">
-                  <img src="${this.experience.logo}" alt="company-logo" />
-                </div>`
-        : html``}
+            ${
+              this.experience.logo
+                ? html`<div class="logo">
+                    <img src="${this.experience.logo}" alt="company-logo" />
+                  </div>`
+                : html``
+            }
             <h3>${this.experience.job_title}</h3>
           </div>
           <div class="company">

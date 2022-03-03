@@ -65,8 +65,25 @@ const componentStyle = css`
   /*##### EXPERIENCE SECTION #####*/
   .experience {
     background: var(--background_color);
-    padding: 50px 0;
+    padding: 0px 0;
     overflow-x: hidden;
+  }
+
+  @media screen and (min-width: 600px) {
+    .experience {
+      padding: 0px 50px;
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    .experience {
+      padding: 0px 100px;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .experience {
+      padding: 0px 200px;
+    }
   }
   .experience .content {
     text-align: center;
@@ -76,7 +93,7 @@ const componentStyle = css`
     color: #fff;
   }
   .experience .content ul {
-    padding: 50px 0;
+    padding: 0px 0;
     list-style-type: none;
   }
 `;
