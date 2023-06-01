@@ -211,7 +211,9 @@ class ExperienceContent extends LitElement {
     const months = this.monthDiff();
     const monthInYear = months % 12;
     const years =
-      months === 12 ? 1 : months < 12 ? 0 : Math.round((months - 12) / 12);
+      months === 12 ? 1 : months < 12 ? 0 : Math.ceil((months - 12) / 12);
+
+    console.log(months);
     return `${years > 0 ? `${years} ${years === 1 ? "Year " : "Years "}` : ""}
             ${
               monthInYear === 0
